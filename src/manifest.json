@@ -1,0 +1,50 @@
+{
+    "manifest_version": 3,
+    "name": "Quick Control Video Extension",
+    "version": "1.0.0",
+    "description": "Play, pause, and seek videos across any tab using keyboard shortcuts.",
+    "permissions": [
+        "scripting"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "icons": {
+        "16": "images/icon16.png",
+        "32": "images/icon32.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "action": {
+        "default_icon": {
+            "16": "images/icon16.png",
+            "32": "images/icon32.png",
+            "48": "images/icon48.png",
+            "128": "images/icon128.png"
+        },
+        "default_title": "Quick Control Video"
+    },
+    "commands": {
+        "seek-backward": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+Comma"
+            },
+            "description": "Seek backward 5 seconds"
+        },
+        "seek-forward": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+Period"
+            },
+            "description": "Seek forward 5 seconds"
+        },
+        "play-pause": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+K"
+            },
+            "description": "Toggle play/pause on playing videos"
+        }
+    }
+}
