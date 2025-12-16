@@ -1,6 +1,13 @@
 // Background service worker for the video toggle extension
-// Store the last paused tab IDs
+// Store the last paused tab IDs (persisted in chrome.storage)
 let lastPausedTabs = [];
+
+// Restore lastPausedTabs from chrome.storage on startup
+chrome.storage.local.get(['lastPausedTabs'], (result) => {
+    if (Array.isArray(result.lastPausedTabs)) {
+        lastPausedTabs = result.lastPausedTabs;
+    }
+});
 
 chrome.commands.onCommand.addListener(async (command) => {
     if (command === "play-pause") {
@@ -38,6 +45,7 @@ chrome.commands.onCommand.addListener(async (command) => {
         // If we found tabs with playing videos, pause them and remember them
         if (tabsWithPlayingVideos.length > 0) {
             lastPausedTabs = tabsWithPlayingVideos.map(t => t.id);
+            chrome.storage.local.set({ lastPausedTabs });
             for (const tab of tabsWithPlayingVideos) {
                 chrome.scripting.executeScript({
                     target: { tabId: tab.id },
@@ -58,6 +66,7 @@ chrome.commands.onCommand.addListener(async (command) => {
                 }
             }
             lastPausedTabs = [];
+            chrome.storage.local.set({ lastPausedTabs });
         } else {
             // No playing videos and no memory, try the active tab
             const activeTabs = await chrome.tabs.query({ active: true, currentWindow: true });

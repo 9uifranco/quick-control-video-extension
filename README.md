@@ -1,5 +1,4 @@
 # Quick Control Video Extension  
-![Logo](https://github.com/9uifranco/quick-control-video-extension/blob/main/src/images/icon32.png?raw=true)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
