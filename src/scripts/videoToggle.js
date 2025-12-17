@@ -47,6 +47,9 @@
 
         if (video.paused) {
             video.play().catch(err => {
+                if (err.name === 'AbortError' || err.name === 'NotAllowedError') {
+                    return;
+                }
                 console.error('Failed to play video:', err);
             });
         } else {
