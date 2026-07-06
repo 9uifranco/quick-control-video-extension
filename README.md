@@ -6,11 +6,16 @@
 
 ### Shortcuts:
 
-- **Play/Pause**: `Ctrl + Shift + K`  
-- **Seek backward 5s**: `Ctrl + Shift + ,`  
-- **Seek forward 5s**: `Ctrl + Shift + .`
+| Action           | Suggested Shortcut     |
+| ---------------- | ---------------------- |
+| Play / Pause     | `Ctrl + Shift + Space` |
+| Seek backward 5s | `Ctrl + Shift + Left`  |
+| Seek forward 5s  | `Ctrl + Shift + Right` |
+| Volume up 10%    | `Ctrl + Shift + Up`    |
+| Volume down 10%  | `Ctrl + Shift + Down`  |
 
-Customize shortcuts here: `chrome://extensions/shortcuts`
+**Shortcuts must be configured manually after installation.**  
+Go to `chrome://extensions/shortcuts` and assign your preferred key combinations.
 
 ## Installation
 

@@ -63,6 +63,33 @@ async function seekAll(amount) {
     });
 }
 
+async function adjustVolume(delta) {
+    const allTabs = await chrome.tabs.query({});
+    const withVideo = await getTabsWithVideo(allTabs, () =>
+        document.querySelectorAll('video').length > 0
+    );
+    await injectOnTabs(withVideo, {
+        func: (d) => {
+            const videos = document.querySelectorAll('video');
+            if (videos.length === 0) return;
+            let target = videos[0];
+            if (videos.length > 1) {
+                const visible = [...videos].filter(v => {
+                    const r = v.getBoundingClientRect();
+                    return r.width > 0 && r.height > 0;
+                });
+                if (visible.length > 0) {
+                    target = visible.reduce((a, b) =>
+                        b.offsetWidth * b.offsetHeight > a.offsetWidth * a.offsetHeight ? b : a
+                    );
+                }
+            }
+            target.volume = Math.max(0, Math.min(1, target.volume + d));
+        },
+        args: [delta]
+    });
+}
+
 const commands = {
     async "play-pause"() {
         const allTabs = await chrome.tabs.query({});
@@ -86,6 +113,8 @@ const commands = {
 
     "seek-forward": () => seekAll(5),
     "seek-backward": () => seekAll(-5),
+    "volume-up": () => adjustVolume(0.1),
+    "volume-down": () => adjustVolume(-0.1),
 };
 
 chrome.commands.onCommand.addListener(async (command) => {

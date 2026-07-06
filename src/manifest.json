@@ -30,23 +30,20 @@
         "default_title": "Quick Control Video"
     },
     "commands": {
+        "play-pause": {
+            "description": "Toggle play/pause on playing videos"
+        },
         "seek-backward": {
-            "suggested_key": {
-                "default": "Ctrl+Shift+Comma"
-            },
             "description": "Seek backward 5 seconds"
         },
         "seek-forward": {
-            "suggested_key": {
-                "default": "Ctrl+Shift+Period"
-            },
             "description": "Seek forward 5 seconds"
         },
-        "play-pause": {
-            "suggested_key": {
-                "default": "Ctrl+Shift+K"
-            },
-            "description": "Toggle play/pause on playing videos"
+        "volume-up": {
+            "description": "Increase volume by 10%"
+        },
+        "volume-down": {
+            "description": "Decrease volume by 10%"
         }
     }
 }
