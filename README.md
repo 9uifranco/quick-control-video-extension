@@ -13,6 +13,7 @@
 | Seek forward 5s  | `Ctrl + Shift + Right` |
 | Volume up 10%    | `Ctrl + Shift + Up`    |
 | Volume down 10%  | `Ctrl + Shift + Down`  |
+| Toggle mute      | `Ctrl + Shift + M`     |
 
 **Shortcuts must be configured manually after installation.**  
 Go to `chrome://extensions/shortcuts` and assign your preferred key combinations.

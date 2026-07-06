@@ -115,6 +115,32 @@ const commands = {
     "seek-backward": () => seekAll(-5),
     "volume-up": () => adjustVolume(0.1),
     "volume-down": () => adjustVolume(-0.1),
+
+    async "toggle-mute"() {
+        const allTabs = await chrome.tabs.query({});
+        const withVideo = await getTabsWithVideo(allTabs, () =>
+            document.querySelectorAll('video').length > 0
+        );
+        await injectOnTabs(withVideo, {
+            func: () => {
+                const videos = document.querySelectorAll('video');
+                if (videos.length === 0) return;
+                let target = videos[0];
+                if (videos.length > 1) {
+                    const visible = [...videos].filter(v => {
+                        const r = v.getBoundingClientRect();
+                        return r.width > 0 && r.height > 0;
+                    });
+                    if (visible.length > 0) {
+                        target = visible.reduce((a, b) =>
+                            b.offsetWidth * b.offsetHeight > a.offsetWidth * a.offsetHeight ? b : a
+                        );
+                    }
+                }
+                target.muted = !target.muted;
+            }
+        });
+    },
 };
 
 chrome.commands.onCommand.addListener(async (command) => {

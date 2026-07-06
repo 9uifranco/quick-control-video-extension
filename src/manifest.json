@@ -44,6 +44,9 @@
         },
         "volume-down": {
             "description": "Decrease volume by 10%"
+        },
+        "toggle-mute": {
+            "description": "Toggle mute/unmute on videos"
         }
     }
 }
