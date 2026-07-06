@@ -2,7 +2,11 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-<p align="center">An extension that lets you control videos playing in any tab using keyboard shortcuts. Works on YouTube, Shorts, and most HTML5 video players. Currently works only in Google Chrome.</p>
+<p align="center">An extension that lets you control videos playing in any tab using keyboard shortcuts. Works on YouTube, Shorts, and most HTML5 video players. Compatible with Google Chrome and Firefox.</p>
+
+<p align="center">
+  <img src="src/images/demo.jpg" alt="Quick Control Video Extension Demo" />
+</p>
 
 ### Shortcuts:
 
@@ -16,19 +20,31 @@
 | Toggle mute      | `Ctrl + Shift + M`     |
 
 **Shortcuts must be configured manually after installation.**  
-Go to `chrome://extensions/shortcuts` and assign your preferred key combinations.
+- **Chrome:** `chrome://extensions/shortcuts`  
+- **Firefox:** `about:addons` → gear icon → **Manage Extension Shortcuts**
 
 ## Installation
 
 ### Chrome
 Official Chrome webstore page: [https://chromewebstore.google.com/detail/keaakadjjomechemoalnjhpnmijdccmf](https://chromewebstore.google.com/detail/keaakadjjomechemoalnjhpnmijdccmf)
 
-### Development (Chrome)
+### Firefox
+Official Firefox Add-ons page: [https://addons.mozilla.org/en-US/firefox/addon/quick-control-video-extension/](https://addons.mozilla.org/en-US/firefox/addon/quick-control-video-extension/)
+
+### Development
 1. Download or clone this repository  
-2. Open Chrome and visit: `chrome://extensions/`  
-3. Enable **Developer mode**  
-4. Click **Load unpacked**  
-5. Select the project folder  
+2. Run `powershell -File build.ps1` to generate browser-specific builds  
+
+**Chrome:**  
+3. Open Chrome and visit: `chrome://extensions/`  
+4. Enable **Developer mode**  
+5. Click **Load unpacked**  
+6. Select the `dist/chrome` folder  
+
+**Firefox:**  
+3. Open Firefox and visit: `about:debugging#/runtime/this-firefox`  
+4. Click **Load Temporary Add-on**  
+5. Select `dist/firefox/manifest.json`  
 
 ## Contributing
 
